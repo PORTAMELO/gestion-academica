@@ -14,9 +14,17 @@ cd gestion-academica
 docker compose up -d --build
 ```
 **4. Restaurar datos de prueba**
+
+Windows PowerShell:
 ```bash
 Get-Content database\backup.dump | docker exec -i gestion_academica_db psql -U admin -d gestion_academica
 ```
+
+Linux/Mac:
+```bash
+docker exec -i gestion_academica_db psql -U admin -d gestion_academica < database/backup.dump
+```
+
 **5. Verificar que la API esta corriendo**
 ```
 http://localhost:8080/api/alumnos
