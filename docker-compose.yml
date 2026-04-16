@@ -1,0 +1,45 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: gestion_academica_db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-gestion_academica}
+      POSTGRES_USER: ${DB_USER:-admin}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-admin123}
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - gestion_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-admin} -d ${POSTGRES_DB:-gestion_academica}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gestion_academica_backend
+    environment:
+      DB_URI: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-gestion_academica}
+      DB_USER: ${DB_USER:-admin}
+      DB_PASSWORD: ${DB_PASSWORD:-admin123}
+      DB_DRIVER: org.postgresql.Driver
+      SERVER_PORT: ${SERVER_PORT:-8080}
+    ports:
+      - "${SERVER_PORT:-8080}:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - gestion_network
+
+volumes:
+  postgres_data:
+
+networks:
+  gestion_network:
+    driver: bridge

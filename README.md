@@ -1,0 +1,23 @@
+# Backend - Gestión Académica
+API REST desarrollada con Java 17 y Spring Boot 3.5.13
+
+## Tecnologías
+- Java 17
+- Spring Boot 3.5.13
+- Spring Data JPA
+- PostgreSQL 15
+- Docker
+
+## Requisitos previos
+- Docker Desktop instalado y corriendo
+
+## Variables de entorno
+Las variables están configuradas en el archivo `.env` en la raíz del proyecto:
+
+| Variable      | Valor por defecto  | Descripción              |
+|---------------|--------------------|--------------------------|
+| POSTGRES_DB   | gestion_academica  | Nombre de la base de datos |
+| DB_USER       | admin              | Usuario de la base de datos |
+| DB_PASSWORD   | admin123           | Contraseña de la base de datos |
+| DB_PORT       | 5432               | Puerto de PostgreSQL |
+| SERVER_PORT   | 8080               | Puerto del backend |
