@@ -31,7 +31,7 @@ public class NotaService {
         Materia materia = materiaService.buscarPorId(materiaId);
 
         if(valor < 0 || valor > 5){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El valor de la nota debe estar entre 0.0 y 10.0");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El valor de la nota debe estar entre 0.0 y 5.0");
         }
 
         Nota nota = Nota.builder()

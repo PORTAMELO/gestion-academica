@@ -37,7 +37,7 @@ public class MateriaController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Materia> eliminarMateria(@PathVariable Long id){
+    public ResponseEntity<Void> eliminarMateria(@PathVariable Long id){
         materiaService.eliminarMateria(id);
         return ResponseEntity.ok().build();
     }

@@ -28,7 +28,7 @@ public class Nota {
     @Column(name = "fecha_registro", nullable = false)
     private LocalDate fechaRegistro;
 
-    @JsonBackReference("alumno-notas")
+    @JsonIgnoreProperties({"notas"})
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "alumno_id", nullable = false)
     private Alumno alumno;
