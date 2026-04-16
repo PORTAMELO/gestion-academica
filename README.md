@@ -1,15 +1,26 @@
 # INSTRUCCIONES DE DESPLIEGUE
-1. Clonar el repositorio
-   git clone <url-repositorio-backend>
-2. Entrar a la carpeta
-   cd gestion-academica
-3. Levantar los contenedores
-   docker compose up -d --build
-4. Restaurar datos de prueba
-   Get-Content database\backup.dump | docker exec -i gestion_academica_db psql -U admin -d gestion_academica
-5. Verificar que la API esta corriendo
-   http://localhost:8080/api/alumnos
+## Pasos para ejecutar el proyecto
 
+**1. Clonar el repositorio**
+```bash
+git clone <url-repositorio-backend>
+```
+**2. Entrar a la carpeta**
+```bash
+cd gestion-academica
+```
+**3. Levantar los contenedores**
+```bash
+docker compose up -d --build
+```
+**4. Restaurar datos de prueba**
+```bash
+Get-Content database\backup.dump | docker exec -i gestion_academica_db psql -U admin -d gestion_academica
+```
+**5. Verificar que la API esta corriendo**
+```
+http://localhost:8080/api/alumnos
+```
 
 ## Backend - Gestión Académica
 API REST desarrollada con Java 17 y Spring Boot 3.5.13
