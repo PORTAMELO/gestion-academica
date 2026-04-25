@@ -39,7 +39,7 @@ public class MateriaController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarMateria(@PathVariable Long id){
         materiaService.eliminarMateria(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 
 }
